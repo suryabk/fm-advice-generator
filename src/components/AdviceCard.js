@@ -5,6 +5,7 @@ import AdviceText from "./AdviceText";
 
 const AdviceCard = () => {
   const [AdviceAPI, setAdviceAPI] = useState({ id: "", advice: "" });
+  const [RefreshData, setRefreshData] = useState(false);
 
   const getDataAPI = async () => {
     try {
@@ -18,7 +19,7 @@ const AdviceCard = () => {
 
   useEffect(() => {
     getDataAPI();
-  }, []);
+  }, [RefreshData]);
 
   return (
     <div className="card">
@@ -29,7 +30,7 @@ const AdviceCard = () => {
       <div className="divider"></div>
       <button
         className="btn loading"
-        onClick={() => window.location.reload()}
+        onClick={() => setRefreshData(!RefreshData)}
       ></button>
     </div>
   );
