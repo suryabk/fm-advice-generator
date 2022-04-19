@@ -1,0 +1,87 @@
+@use "base/index" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
+}
+
+.App {
+  background-color: $Dark-Blue;
+  min-height: 100vh;
+  @include flex-box(center, center, column);
+}
+
+.card {
+  background-color: $Dark-Grayish-Blue;
+  padding: 25px 25px 0;
+  width: 40%;
+  min-height: 40vh;
+  margin: auto;
+  text-align: center;
+  border-radius: 18px;
+
+  @include flex-box(space-between, center, column);
+  @include tablet() {
+    width: 80%;
+  }
+
+  & .card-body {
+    @include flex-box(space-between, center, column);
+
+    &__number {
+      color: $Neon-Green;
+      font-weight: map-get($map: $font-weights, $key: "bold");
+      letter-spacing: 4px;
+      font-size: map-get($font-sizes, "p");
+      margin-top: $margin-x;
+
+      @include phone() {
+        font-size: 80%;
+      }
+    }
+
+    &__text {
+      color: $Light-Cyan;
+      font-weight: map-get($map: $font-weights, $key: "bold");
+      font-size: map-get($font-sizes, "h1");
+      margin: $margin-x 0;
+
+      @include phone() {
+        font-size: calc(map-get($font-sizes, "h1") * 0.8);
+      }
+    }
+  }
+  .divider {
+    background-image: url("../images/pattern-divider-desktop.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    min-height: 10px;
+    margin-bottom: calc(#{$margin-x} * 0.5);
+
+    @include phone {
+      background-image: url("../images/pattern-divider-mobile.svg");
+    }
+  }
+
+  .btn {
+    border-radius: 50%;
+    background-color: $Neon-Green;
+    width: 54px;
+    height: 54px;
+    border: none;
+    background-image: url("../images/icon-dice.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    top: calc(20vh * 0.2);
+
+    &:hover {
+      box-shadow: 0px 0px 30px $Neon-Green;
+      transition: all 0.2s ease-in;
+      cursor: pointer;
+    }
+  }
+}
